@@ -47,7 +47,7 @@ for inc = [1:length(allROIs)]
         for jnc = [1:length(pvr)]
             if pvr(1,jnc) == 0
                 disp("")
-                fprintf("Point on the y-axis: %s, Pt %d @ %d°\n",fileNames(inc),jnc,deg)
+                fprintf("Point on the x-axis: %s, Pt %d @ %d°\n",fileNames(inc),jnc,deg)
                 continue
             end
             if prevSign ~= sign(pvr(1,jnc))
