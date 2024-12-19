@@ -50,7 +50,7 @@ for inc = [1:length(allROIs)]
                 fprintf("Point on the x-axis: %s, Pt %d @ %d°\n",fileNames(inc),jnc,deg)
                 continue
             end
-            if prevSign ~= sign(pvr(1,jnc))
+            if prevSign ~= sign(pvr(1,jnc)) %    (x1          ,y1          ,x2        ,y2        )
                 pointList = [pointList,yintercept(pvr(1,jnc-1),pvr(2,jnc-1),pvr(1,jnc),pvr(2,jnc))];
                 prevSign = sign(pvr(1,jnc));
             end
