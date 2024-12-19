@@ -5,9 +5,9 @@ from numpy import matrix,sin,cos,degrees,sign
 from numpy import append as npappend
 import shapely
 
-zipFilePath=r"C:\Users\jonme\Documents\School Work\Research - Bowman Lab\wagonWheelMeasurer\ignore\measurements.zip"
+zipFilePath=r"C:\Users\jonme\Documents\School Work\Research - Bowman Lab\wagonWheelMeasurer\ignore\25C-winA-preEDS-1.zip"
 tempStoragePath=r"C:\Users\jonme\Documents\School Work\Research - Bowman Lab\wagonWheelMeasurer\ignore\temporaryRoiStorage"
-saveFilePath=r"C:\Users\jonme\Documents\School Work\Research - Bowman Lab\wagonWheelMeasurer\measurements.txt"
+saveFilePath=r"C:\Users\jonme\Documents\School Work\Research - Bowman Lab\wagonWheelMeasurer\ignore\25C-winA-preEDS-1.txt"
 
 def rotMatrix(theta):
     # returns a numpy rotation matrix at the given angle (radians)
@@ -43,7 +43,7 @@ with open(saveFilePath,"a") as saveFile:
         roiCoords = npappend(roiCoords,[roiCoords[0]], axis=0)
         roiPoly = shapely.Polygon(roiCoords)
         roiCoordsCentered = roiCoords - roiPoly.centroid.coords
-        for angle in range(0,179,20):
+        for angle in range(0,180,1):
             roiCoordsRotated = roiCoordsCentered*rotMatrix(angle)
             refPt = shapely.Point(roiCoordsRotated[0])
             yIntList = []
