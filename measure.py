@@ -5,9 +5,22 @@ from numpy import matrix,sin,cos,degrees,sign
 from numpy import append as npappend
 import shapely
 
-zipFilePath=r"C:\Users\jonme\Documents\School Work\Research - Bowman Lab\wagonWheelMeasurer\ignore\25C-winA-preEDS-1.zip"
+#TODO:
+# Implement Readme: 
+    # with open("readme.txt","w") as readme:
+    # readme.write("groups of roi files are stored in a .zip file.\n
+    # This script needs a temporary place to store the unzipped ROIs while it runs.\n
+    # Because this is a folder for temporary files, the contents are deleted every time you run measure.py\n
+    # DO NOT STORE ANYTHING IN THIS FOLDER. LET THE PROGRAM HANDLE IT.")
+# import numpy in a more standard way
+# upgrade to a more current version of python
+# add validation for file reading and deletion
+# add GUI and increase general user-friendliness
+
+
+zipFilePath=r"C:\Users\jonme\Documents\School Work\Research - Bowman Lab\wagonWheelMeasurer\ignore\measurements.zip"
 tempStoragePath=r"C:\Users\jonme\Documents\School Work\Research - Bowman Lab\wagonWheelMeasurer\ignore\temporaryRoiStorage"
-saveFilePath=r"C:\Users\jonme\Documents\School Work\Research - Bowman Lab\wagonWheelMeasurer\ignore\25C-winA-preEDS-1.txt"
+saveFilePath=r"C:\Users\jonme\Documents\School Work\Research - Bowman Lab\wagonWheelMeasurer\ignore\measurements.txt"
 
 def rotMatrix(theta):
     # returns a numpy rotation matrix at the given angle (radians)
@@ -26,16 +39,8 @@ fileNames = os.listdir()
 roiList = []
 for file in fileNames:
     roiList.append(roifile.ImagejRoi.fromfile(file).coordinates())
-    #coordList.append(roifile.ImagejRoi.fromfile(file).coordinates().tolist())
-    #^adding to      ^creating an object from         ^extracting the ^converting the numpy list
-    #the list        the ROI file                     coordinates out  into a python list so it's
-    #                                                 of that object   MATLAB readable
-
 for file in fileNames:
     os.remove(file)
-
-# with open("readme.txt","w") as readme:
-#     readme.write("groups of roi files are stored in a .zip file.\nThis script needs a temporary place to store the unzipped ROIs while it runs.\nBecause this is a folder for temporary files, the contents are deleted every time you run measure.py\nDO NOT STORE ANYTHING IN THIS FOLDER. LET THE PROGRAM HANDLE IT.")
 
 with open(saveFilePath,"a") as saveFile:
     saveFile.write("ROI Name,Angle,Diameter(px)\n")
