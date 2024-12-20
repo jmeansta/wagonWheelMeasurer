@@ -11,6 +11,7 @@ import shapely
     # This script needs a temporary place to store the unzipped ROIs while it runs.\n
     # Because this is a folder for temporary files, the contents are deleted every time you run measure.py\n
     # DO NOT STORE ANYTHING IN THIS FOLDER. LET THE PROGRAM HANDLE IT.")
+# import numpy in a more standard way
 # upgrade to a more current version of python
 # add validation for file reading and deletion
 # add GUI and increase general user-friendliness
