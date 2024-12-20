@@ -15,14 +15,15 @@ import shapely
 # add validation for file reading and deletion
 # add GUI and increase general user-friendliness
 # add pixels to real measurements conversion
-
+# add more options for angle ranges
 
 zipFilePath=r"C:\Users\jonme\Documents\School Work\Research - Bowman Lab\wagonWheelMeasurer\ignore\measurements.zip"
 tempStoragePath=r"C:\Users\jonme\Documents\School Work\Research - Bowman Lab\wagonWheelMeasurer\ignore\temporaryRoiStorage"
 saveFilePath=r"C:\Users\jonme\Documents\School Work\Research - Bowman Lab\wagonWheelMeasurer\ignore\measurements.txt"
+angleStep = 1
 
 def rotMatrix(theta):
-    # returns a numpy rotation matrix at the given angle (radians)
+    # returns a numpy rotation matrix at the given angle (degrees)
     theta = np.degrees(theta)
     return np.matrix([[np.cos(theta),-np.sin(theta)],[np.sin(theta),np.cos(theta)]])
 
@@ -47,7 +48,7 @@ with open(saveFilePath,"a") as saveFile:
         roiCoords = np.append(roiCoords,[roiCoords[0]], axis=0)
         roiPoly = shapely.Polygon(roiCoords)
         roiCoordsCentered = roiCoords - roiPoly.centroid.coords
-        for angle in range(0,180,1):
+        for angle in range(0,180,angleStep):
             roiCoordsRotated = roiCoordsCentered*rotMatrix(angle)
             refPt = shapely.Point(roiCoordsRotated[0])
             yIntList = []
