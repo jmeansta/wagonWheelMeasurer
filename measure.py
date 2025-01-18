@@ -14,7 +14,7 @@ import shapely
 # upgrade to a more current version of python
 # add validation for file reading and deletion
 # add GUI and increase general user-friendliness
-# add pixels to real measurements conversion
+# add pixels --> real measurements conversion
 # add more options for angle ranges
 
 zipFilePath=r"C:\Users\jonme\Documents\School Work\Research - Bowman Lab\wagonWheelMeasurer\ignore\measurements.zip"
